@@ -46,7 +46,8 @@
             "LICENSE",
             "README.md",
             "library.properties",
-            "library.json"
+            "library.json",
+            "keywords.txt"
         ],
         "exclude":
         [
