@@ -2,10 +2,9 @@
 
 [![GitHub release](https://img.shields.io/github/release/lnlp/EasyLed.svg)](https://github.com/lnlp/EasyLed/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/lnlp/EasyLed/v1.0.0.svg)](https://github.com/lnlp/EasyLed/compare/v1.0.0...main)
 
-EasyLed is an Arduino library for controlling standard LEDs in an easy way.
+Arduino library for controlling standard LEDs in an easy way.
 
-It provides simple logical class methods like `led.on()`, `led.toggle()`, `led.flash()`, `led.isOff()` and more.
-This will help to write clean code that is easy to read and understand. 
+It provides simple logical methods like `led.on()`, `led.toggle()`, `led.flash()`, `led.isOff()` and more. This library will help to write cleaner code that is easy to read and understand.
 
 A LED can be switched On by simply using the statement `led.on()`.  
 When reading that code it is instantly clear what it does: switch the LED On.  
