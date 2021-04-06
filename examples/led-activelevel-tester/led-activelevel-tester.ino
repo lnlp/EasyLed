@@ -34,11 +34,13 @@ void printLedInfo()
 {
     Serial.println("\nObtained information:");     
     Serial.print("LED is currently ");  
-    Serial.println(led.isOn() ? "on" : "off");
+    Serial.println(led.isOn() ? "On" : "Off");
     Serial.print("Is connected to pin ");
     Serial.println(led.pin());
-    Serial.print("Activelevel is set to active-");
-    Serial.println(led.activeLevel() == EasyLed::ActiveLevel::Low ? "low" : "high"); 
+    Serial.print("Activelevel is active-");
+    Serial.println(led.activeLevel() == EasyLed::ActiveLevel::High ? "high" : "low"); 
+    Serial.print("Initial state is ");
+    Serial.println(led.initialState() == EasyLed::State::On ? "On" : "Off");     
     Serial.println(); 
 }
 
@@ -50,7 +52,7 @@ String getString(EasyLed::ActiveLevel level)
 
 String getString(EasyLed::State state)
 {
-    return (state == EasyLed::State::On ? String("on") : String("off"));
+    return (state == EasyLed::State::On ? String("On") : String("Off"));
 }
 
 EasyLed::ActiveLevel getInverse(EasyLed::ActiveLevel level)
@@ -68,7 +70,7 @@ void setup()
 {
     Serial.begin(115200);
     Serial.println("\n\nled-activelevel-tester started");
-    Serial.println("\nLED should currently be off");
+    Serial.println("\nLED should currently be Off");
     delay(period);
     printLedInfo();
     delay(period); 
@@ -89,13 +91,13 @@ void loop()
     Serial.print(getString(targetState));
     Serial.print(" then the LED is active-");
     Serial.println(getString(activeLevel));
-    Serial.println("The activelevel parameter for the constructor is correct");
+    Serial.println("The activeLevel parameter for the constructor is correct");
     
     Serial.print("\nIf the LED is ");
     Serial.print(getString(getInverse(targetState)));    
     Serial.print(" then the LED is active-");
     Serial.println(getString(getInverse(activeLevel)));
-    Serial.print("The activelevel parameter for the constructor should be changed to active-"); 
+    Serial.print("The activeLevel parameter for the constructor should be changed to active-"); 
     Serial.println(getString(getInverse(activeLevel)));
     Serial.println();
 

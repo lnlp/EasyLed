@@ -31,11 +31,13 @@ void printLedInfo()
 {
     Serial.println("\nObtained information:");     
     Serial.print("LED is currently ");  
-    Serial.println(led.isOn() ? "on" : "off");
+    Serial.println(led.isOn() ? "On" : "Off");
     Serial.print("Is connected to pin ");
     Serial.println(led.pin());
-    Serial.print("Activelevel is set to active-");
-    Serial.println(led.activeLevel() == EasyLed::ActiveLevel::Low ? "low" : "high"); 
+    Serial.print("Activelevel is active-");
+    Serial.println(led.activeLevel() == EasyLed::ActiveLevel::High ? "high" : "low"); 
+    Serial.print("Initial state is ");
+    Serial.println(led.initialState() == EasyLed::State::On ? "On" : "Off");     
     Serial.println(); 
 }
 
@@ -44,8 +46,8 @@ void setup()
 {
     Serial.begin(115200);
     Serial.println("\n\nled-advanced started");
-    Serial.println("\nLED should currently be on");
-    Serial.println("If off, change activelevel in the constructor");
+    Serial.println("\nLED should currently be On");
+    Serial.println("If Off, change activeLevel in the constructor");
     delay(period);
     Serial.println("\nrunning:");    
     printLedInfo();

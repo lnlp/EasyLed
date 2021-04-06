@@ -31,8 +31,8 @@ void setup()
 {
     Serial.begin(115200);
     Serial.println("\n\nled-basics started");
-    Serial.println("\nLED should currently be off.");
-    Serial.println("If on, change activelevel in the constructor.");
+    Serial.println("\nLED should currently be Off.");
+    Serial.println("If On, change activeLevel in the constructor.");
     delay(period);
     Serial.println("\nrunning:");
 }

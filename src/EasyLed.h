@@ -49,10 +49,12 @@ public:
     bool isOff() const;
     uint8_t pin() const;
     ActiveLevel activeLevel() const;
+    State initialState() const;
 
     void on();
     void off();
     void toggle();
+    void reset();
     void flash(
         const uint8_t  count = 2, 
         const uint16_t onTimeMs = 160, 
@@ -65,7 +67,10 @@ private:
     uint8_t pin_;
     ActiveLevel activeLevel_;
 	State state_;
-    EasyLed();  // Disable parameterless public constructor.    
+    State initialState_;
+    
+    EasyLed();                                  // Disable parameterless public constructor.
+    void forceState(const State state);      
 };    
 
 #endif  // EASY_LED_H_

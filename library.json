@@ -1,8 +1,8 @@
 {
     "name": "EasyLed",
-    "version": "1.0.0",
-    "keywords": ["led", "easy", "control"],
-    "description": "EasyLed is an Arduino library that makes controlling standard LEDs easy. Use simple logical functions like led.on(), led.toggle(), led.flash(), led.isOff() and more. Helps to write clean code that is easy to read and understand.",
+    "version": "1.1.0",
+    "keywords": ["led", "control", "blink", "easy"],
+    "description": "Arduino library for controlling standard LEDs in an easy way. EasyLed provides simple logical methods like led.on(), led.toggle(), led.flash(), led.isOff() and more. This library will help to write cleaner code that is easy to read and understand.",
     "authors": 
     {    
         "name": "Leonel Lopes Parente",

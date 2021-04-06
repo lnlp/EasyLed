@@ -2,10 +2,9 @@
  * 
  *  File:         EasyLed.cpp
  * 
- *  Description:  Arduino library that makes controlling standard LEDs easy. 
- *                Use simple logical functions like led.on(), led.toggle(), 
- *                led.flash(), led.isOff() and more. Helps to write clean code 
- *                that is easy to read and understand.
+ *  Description:  Arduino library for controlling standard LEDs in an easy way. 
+ *                EasyLed provides simple logical methods like led.on(), 
+ *                led.toggle(), led.flash(), led.isOff() and more.
  * 
  *  Author:       Leonel Lopes Parente
  * 
@@ -26,6 +25,8 @@
 
 #include "EasyLed.h"
 
+// --- Public -----
+
 EasyLed::EasyLed(
     const uint8_t pin,              // GPIO pin to which the LED is connected.
     const ActiveLevel activeLevel,  // The logic level when the LED is on.
@@ -33,13 +34,22 @@ EasyLed::EasyLed(
     const uint8_t pinmode           // Default is OUTPUT, some Arduino cores also 
 )                                   // support OUTPUT_OPEN_DRAIN which can be
 {                                   // optionally specified here.
+    // Note: only a simple check is implemented to prevent 
+    // that INPUT is specified as pinmode. It is not possible to check
+    // for other possible invalid options because these are hardware dependent
+    // and will not be defined in all situations.
     pin_ = pin;
     activeLevel_ = activeLevel;
-    // Initialize state_ to inverse of initialState otherwise 
-    // setState(initialState) will not set state. 
-    state_ = (initialState == State::Off ? State::On : State::Off); 
-    pinMode(pin, pinmode);
-    setState(initialState);
+    initialState_ = initialState; 
+    if (pinmode == INPUT)           // Prevent setting pinmode to INPUT
+    {
+        pinMode(pin, OUTPUT);
+    }
+    else
+    {
+        pinMode(pin, pinmode);
+    }
+    forceState(initialState_);
 }
 
 
@@ -51,14 +61,10 @@ EasyLed::State EasyLed::getState() const
 
 void EasyLed::setState(const State state)
 {
-    // Only perform actions when state is different from current state_.
+    // Only set state if specified state is different from current state_.
     if (state != state_)
     {
-        if (state == State::On)
-            digitalWrite(pin_, static_cast<uint8_t>(activeLevel_));        // LOW or HIGH
-        else
-            digitalWrite(pin_, static_cast<uint8_t>(activeLevel_) ^ 1);    // For On use inverse of value for Off.
-        state_ = state;
+        forceState(state);
     }
 }
 
@@ -72,6 +78,12 @@ uint8_t EasyLed::pin() const
 EasyLed::ActiveLevel EasyLed::activeLevel() const
 {
     return activeLevel_;
+}
+
+
+EasyLed::State  EasyLed::initialState() const
+{
+    return initialState_;
 }
 
 
@@ -97,6 +109,12 @@ bool EasyLed::isOff() const
 {
     return !isOn();
 }
+
+
+void EasyLed::reset()
+{
+    setState(initialState_);
+}    
 
 
 void EasyLed::toggle()
@@ -143,6 +161,18 @@ void EasyLed::flash(
         delay(trailOffTimeMs);
     }
     setState(savedState);
+}
+
+
+// --- Private -----
+
+void EasyLed::forceState(const State state)
+{
+    if (state == State::On)
+        digitalWrite(pin_, static_cast<uint8_t>(activeLevel_));        // LOW or HIGH
+    else
+        digitalWrite(pin_, static_cast<uint8_t>(activeLevel_) ^ 1);    // For On use inverse of value for Off.
+    state_ = state;
 }
 
 

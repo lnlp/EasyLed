@@ -31,8 +31,8 @@ void doOtherLedStuff()
 {
     Serial.println("\ndoing other led stuff:");  
 
-    Serial.println("off");        
-    led.off();
+    Serial.println("reset");        
+    led.reset();
     delay(period);        
     Serial.println("flash 5");   
     led.flash(5);
@@ -43,8 +43,8 @@ void setup()
 {
     Serial.begin(115200);
     Serial.println("\n\nled-state started");
-    Serial.println("\nLED should currently be off.");
-    Serial.println("If on, change activelevel in the constructor.");
+    Serial.println("\nLED should currently be Off.");
+    Serial.println("If On, change activeLevel in the constructor.");
     delay(period);
     Serial.println("\nrunning:\n");  
     Serial.println("on");        
