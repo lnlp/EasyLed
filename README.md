@@ -18,7 +18,7 @@ Optionally a third parameter `initialState` can be specified to set the initial 
 The fourth parameter `pinmode` is also optional and sets the pin as output. This should normally not be changed
 _(except when there is reason to change it to OUTPUT_OPEN_DRAIN for architectures that support it)_.
 
-####Active-low and active-high explained  
+#### Active-low and active-high explained  
 LEDs are switched On and Off by programming the state of a GPIO pin. Setting the GPIO pin to a LOW level can turn a LED either On or Off. If the LED is On when the GPIO pin level is LOW this is called active-low. If the LED is On when the pin level is HIGH this is called active-high. Whether a LED is active-low or active-high depends on how the LED is physically connected. Both types are used in practice.
 
 ### Constructor
