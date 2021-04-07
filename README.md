@@ -1,6 +1,6 @@
 # EasyLed  
 
-[![GitHub release](https://img.shields.io/github/release/lnlp/EasyLed.svg)](https://github.com/lnlp/EasyLed/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/lnlp/EasyLed/v1.0.0.svg)](https://github.com/lnlp/EasyLed/compare/v1.0.0...main)
+[![GitHub release](https://img.shields.io/github/release/lnlp/EasyLed.svg)](https://github.com/lnlp/EasyLed/releases/latest) [![GitHub commits](https://img.shields.io/github/commits-since/lnlp/EasyLed/v1.1.0.svg)](https://github.com/lnlp/EasyLed/compare/v1.1.0...main)
 
 Arduino library for controlling standard LEDs in an easy way.
 
