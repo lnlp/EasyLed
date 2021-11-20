@@ -4,7 +4,8 @@
 
 Arduino library for controlling standard LEDs in an easy way.
 
-EasyLed provides simple logical methods like `led.on()`, `led.toggle()`, `led.flash()`, `led.isOff()` and more. This library will help to write cleaner code that is easy to read and understand.
+EasyLed provides simple logical methods like `on()`, `off()`, `toggle()`, `flash()`, `isOn()`, `isOff()` and `reset()`.<br>
+This library will help to write cleaner code that is easy to read and understand.
 
 A LED can be switched On by simply using the statement **`led.on()`**. When someone reads that statement it is instantly clear what it does: switch the LED On. With EasyLed there is no need to use `pinMode()`, `digitalWrite()`, `HIGH` and `LOW` anymore.
 
